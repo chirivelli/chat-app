@@ -11,7 +11,7 @@ export default function Home() {
   const [username, setUsername] = useState('')
 
   return (
-    <div className='mx-auto flex h-screen max-h-screen max-w-screen flex-col items-center justify-center'>
+    <div className='mx-auto flex h-screen max-h-screen max-w-screen flex-col items-center justify-center bg-slate-800'>
       {user.current ? (
         <ChatBox user={user.current} socket={socket} />
       ) : (

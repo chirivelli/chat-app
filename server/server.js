@@ -13,6 +13,7 @@ const io = new Server(socketio, {
 
 io.on('connection', (socket) => {
   socket.on('push_message', (message) => {
+    console.log(message)
     socket.broadcast.emit('pull_message', message)
   })
 
