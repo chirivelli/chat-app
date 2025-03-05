@@ -38,14 +38,14 @@ export default function ChatBox({ user, socket }) {
   })
 
   return (
-    <div className='flex size-19/20 flex-col justify-between gap-2 rounded bg-slate-600 p-4'>
+    <div className='flex grow flex-col justify-between bg-slate-700'>
       <div className='flex flex-col gap-2 overflow-auto scroll-smooth rounded-md p-4'>
         {chat.map((message, index) => (
           <Message key={index} message={message} user={user} />
         ))}
       </div>
 
-      <div className='flex gap-2'>
+      <div className='flex gap-2 bg-slate-600 p-4'>
         <Input
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -54,7 +54,7 @@ export default function ChatBox({ user, socket }) {
           className='bg-slate-300'
           placeholder='Type message here...'
         />
-        <Button onClick={(e) => handleSend(e)}>
+        <Button onClick={(e) => handleSend(e)} className='hover:bg-slate-800'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 24 24'
