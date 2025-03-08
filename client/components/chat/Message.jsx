@@ -7,7 +7,7 @@ export default function Message({ user, message }) {
             {message.sender}
           </div>
 
-          <div className='flex flex-wrap items-end justify-end'>
+          <div className='flex flex-wrap items-end justify-between'>
             <div className='px-1 font-medium text-slate-900'>
               {message.content}
             </div>
