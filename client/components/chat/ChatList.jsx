@@ -27,7 +27,7 @@ export default function ChatList({ user, socket }) {
   )
 
   return (
-    <div className='h-full w-1/3 overflow-y-auto bg-slate-800'>
+    <div className='h-full w-1/5 overflow-y-auto bg-slate-800'>
       <div className='border-b border-slate-700 p-4'>
         <h2 className='text-lg font-semibold text-white'>Chats</h2>
         <input

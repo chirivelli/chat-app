@@ -12,15 +12,16 @@ const io = new Server(socketio, {
 })
 
 io.on('connection', (socket) => {
+
   socket.on('push_message', (message) => {
-    console.log(message)
+    console.log('new message', message)
     socket.broadcast.emit('pull_message', message)
   })
 
   socket.on('new_user', (user) => {
     console.log('new user', user)
+    socket.broadcast.emit('pull_user', user)
   })
-
 
 })
 

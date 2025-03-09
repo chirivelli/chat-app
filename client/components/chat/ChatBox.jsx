@@ -1,11 +1,12 @@
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Message from '@/components/chat/Message'
 
 export default function ChatBox({ user, socket }) {
   const [input, setInput] = useState('')
   const [chat, setChat] = useState([])
+  const scroller = useRef(null)
 
   const handleSend = (e) => {
     e.preventDefault()
@@ -29,6 +30,14 @@ export default function ChatBox({ user, socket }) {
   }
 
   useEffect(() => {
+    if (scroller.current) {
+      scroller.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+        inline: 'nearest',
+      })
+    }
+
     socket.on('pull_message', (message) => {
       setChat((prev) => [...prev, message])
     })
@@ -43,6 +52,7 @@ export default function ChatBox({ user, socket }) {
         {chat.map((message, index) => (
           <Message key={index} message={message} user={user} />
         ))}
+        <div ref={scroller} className='pb-2'></div>
       </div>
 
       <div className='flex gap-2 bg-slate-600 p-4'>
