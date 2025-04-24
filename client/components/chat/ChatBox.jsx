@@ -12,7 +12,11 @@ export default function ChatBox({ user, socket }) {
     e.preventDefault()
     if (!input) return
 
-    const currTime = new Date().toLocaleTimeString()
+    const currTime = new Date().toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+    })
 
     const message = {
       sender: user,
