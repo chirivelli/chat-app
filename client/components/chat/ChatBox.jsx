@@ -12,20 +12,16 @@ export default function ChatBox({ user, socket }) {
     e.preventDefault()
     if (!input) return
 
-    const currTime = new Date().toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: '2-digit',
-      hour12: true,
-    })
-
     const message = {
       sender: user,
       type: 'text',
       content: input,
-      time: currTime,
+      time: new Date().toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+      }),
     }
-
-    console.log(message)
 
     setChat((prev) => [...prev, message])
     socket.emit('push_message', message)
