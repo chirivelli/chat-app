@@ -7,6 +7,7 @@ export default function ChatBox({ user, socket }) {
   const [input, setInput] = useState('')
   const [chat, setChat] = useState([])
   const scroller = useRef(null)
+  const inputRef = useRef(null)
 
   const handleSend = (e) => {
     e.preventDefault()
@@ -30,6 +31,7 @@ export default function ChatBox({ user, socket }) {
   }
 
   useEffect(() => {
+    inputRef.current?.focus()
     if (scroller.current) {
       scroller.current.scrollIntoView({
         behavior: 'smooth',
@@ -57,6 +59,7 @@ export default function ChatBox({ user, socket }) {
 
       <div className='flex gap-2 bg-slate-600 p-4'>
         <Input
+          ref={inputRef}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSend(e)}
