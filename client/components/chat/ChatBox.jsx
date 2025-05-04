@@ -64,7 +64,7 @@ export default function ChatBox({ user, socket }) {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSend(e)}
           type='text'
-          className='bg-slate-300'
+          className='bg-slate-200'
           placeholder='Type message here...'
         />
         <Button onClick={(e) => handleSend(e)} className='hover:bg-slate-800'>
